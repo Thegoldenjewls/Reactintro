@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Button from './components/Button';
+import Nav from './components/Nav';
 
-function App() {
+
+function App(props) {
+  const [count, setCount] = useState(0)
+  const handleButtonClick = (step) => {
+    setCount(count + step)
+  }
+  const myButtonSteps = [1, 10, 100, 1000]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="fromApp">
+        <Nav brand="Kekambas React"/>
+        <div className='container'>
+          <h1>Hello World</h1>
+          <h4>Current Value: {count}</h4>
+          {myButtonSteps.map((step, i) => <Button step={step} handleClick={handleButtonClick} key={i} />)}
+        </div>
     </div>
-  );
+    );
 }
+
 
 export default App;
