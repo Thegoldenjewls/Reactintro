@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
-import Button from './components/Button';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav';
+
+import Kekambas from './views/Kekambas';
+import RacerTable from './views/RacerTable';
 
 
 function App(props) {
-  const [count, setCount] = useState(0)
-  const handleButtonClick = (step) => {
-    setCount(count + step)
-  }
-  const myButtonSteps = [1, 10, 100, 1000]
-  return (
-    <div id="fromApp">
-        <Nav brand="Kekambas React"/>
-        <div className='container'>
-          <h1>Hello World</h1>
-          <h4>Current Value: {count}</h4>
-          {myButtonSteps.map((step, i) => <Button step={step} handleClick={handleButtonClick} key={i} />)}
+    return (
+        <div id="fromApp">
+            <Nav brand="Kekambas React"/>
+            <div className='container'>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/standings' element={<RacerTable />} />
+                    <Route path='/kekambas' element={<Kekambas />} />
+                </Routes>
+            </div>
         </div>
-    </div>
     );
 }
-
-
 export default App;
